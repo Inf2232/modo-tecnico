@@ -1,0 +1,37 @@
+---
+import { contact } from "../config/contact";
+import { isDefined } from "../config/site";
+
+const filas = [
+  { etiqueta: "Ubicación", valor: contact.location },
+  { etiqueta: "Modalidad", valor: contact.serviceModes.join(" · ") },
+  { etiqueta: "Zona de servicio", valor: contact.serviceArea },
+  { etiqueta: "Dirección", valor: contact.address },
+  { etiqueta: "Horarios", valor: contact.hours },
+].filter((fila) => fila.valor !== "" && isDefined(fila.valor));
+
+const mapaDefinido = isDefined(contact.mapsUrl);
+---
+<section class="mx-auto max-w-2xl px-4 pb-16" aria-labelledby="donde-titulo">
+  <h2 id="donde-titulo" class="text-2xl font-bold">Dónde estamos</h2>
+
+  <dl class="mt-4 divide-y divide-borde rounded-xl border border-borde bg-superficie">
+    {filas.map((fila) => (
+      <div class="flex flex-col gap-1 px-5 py-3 sm:flex-row sm:gap-6">
+        <dt class="w-40 shrink-0 text-sm text-texto-suave">{fila.etiqueta}</dt>
+        <dd class="font-semibold">{fila.valor}</dd>
+      </div>
+    ))}
+  </dl>
+
+  {mapaDefinido && (
+    <a
+      href={contact.mapsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-4 inline-block font-semibold text-acento hover:underline"
+    >
+      Ver en Google Maps →
+    </a>
+  )}
+</section>

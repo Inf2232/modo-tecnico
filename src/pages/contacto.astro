@@ -4,7 +4,7 @@ import ContactForm from "../components/ContactForm";
 import { services } from "../data/services";
 import { contact } from "../config/contact";
 import { isDefined, site } from "../config/site";
-
+import ServiceArea from "../components/ServiceArea.astro";
 const whatsappNumber = isDefined(contact.whatsapp) ? contact.whatsapp : null;
 const servicios = services.map((s) => s.name);
 ---
@@ -23,5 +23,6 @@ const servicios = services.map((s) => s.name);
         <ContactForm client:visible whatsappNumber={whatsappNumber} services={servicios} />
       </div>
     </section>
+    <ServiceArea />
   </main>
 </Layout>
