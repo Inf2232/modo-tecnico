@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site, isDefined } from "../config/site";
+import { contact } from "../config/contact";
+
+const hayEmail = isDefined(contact.email);
+---
+
+<Layout
+  title="Política de privacidad"
+  description={`Cómo trata ${site.name} los datos que compartes al usar este sitio.`}
+>
+  <main>
+    <article class="mx-auto max-w-3xl space-y-8 px-4 py-16">
+      <header>
+        <h1 class="text-4xl font-bold tracking-tight">Política de privacidad</h1>
+        <p class="mt-3 text-texto-suave">Última actualización: octubre de 2026.</p>
+      </header>
+
+      <section aria-labelledby="datos">
+        <h2 id="datos" class="text-2xl font-bold">Qué datos recoge este sitio</h2>
+        <p class="mt-2 text-texto-suave">
+          Este sitio no tiene cuentas de usuario ni guarda tus datos en un servidor propio. Si usas el
+          formulario de diagnóstico, lo que escribes se usa solo para preparar un mensaje de WhatsApp en
+          tu propio dispositivo. Tú decides si lo envías.
+        </p>
+      </section>
+
+      <section aria-labelledby="whatsapp">
+        <h2 id="whatsapp" class="text-2xl font-bold">WhatsApp</h2>
+        <p class="mt-2 text-texto-suave">
+          Al enviar el mensaje, la conversación pasa a WhatsApp y queda sujeta a las condiciones y a la
+          política de privacidad de esa plataforma. Los datos que nos envíes por ese medio, como tu nombre,
+          teléfono y la descripción del problema, los usamos para responder tu consulta.
+        </p>
+      </section>
+
+      <section aria-labelledby="cookies">
+        <h2 id="cookies" class="text-2xl font-bold">Cookies y analítica</h2>
+        <p class="mt-2 text-texto-suave">
+          Esta versión del sitio no utiliza cookies propias ni herramientas de seguimiento o publicidad.
+          El sitio está alojado en Cloudflare, que puede registrar datos técnicos de acceso, como la
+          dirección IP, para el funcionamiento y la seguridad del servicio. Si en el futuro incorporamos
+          analítica, actualizaremos esta página.
+        </p>
+      </section>
+
+      <section aria-labelledby="externos">
+        <h2 id="externos" class="text-2xl font-bold">Enlaces a otros sitios</h2>
+        <p class="mt-2 text-texto-suave">
+          El sitio puede enlazar a servicios externos, como Google Maps o redes sociales. Cada uno tiene
+          su propia política de privacidad, sobre la que no tenemos control.
+        </p>
+      </section>
+
+      <section aria-labelledby="contacto-priv">
+        <h2 id="contacto-priv" class="text-2xl font-bold">Contacto</h2>
+        <p class="mt-2 text-texto-suave">
+          Si tienes dudas sobre esta política o quieres que borremos una conversación, escríbenos 
+          {hayEmail ? (
+            <>
+               a <a href={`mailto:${contact.email}`} class="text-acento hover:underline">{contact.email}</a>.
+            </>
+          ) : (
+            <>
+              desde la <a href="/contacto" class="text-acento hover:underline">página de contacto</a>.
+            </>
+          )}
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>

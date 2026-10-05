@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import foto from "../assets/carlos.jpg";
+import { site, owner } from "../config/site";
+
+const areas = [
+  "Ingeniería Informática",
+  "Desarrollo de software con Python y Django",
+  "Bases de datos SQL",
+  "Soporte informático",
+  "Hardware y software",
+  "Windows y Linux",
+  "Mantenimiento y diagnóstico de equipos",
+];
+---
+
+<Layout
+  title={`Sobre mí: ${owner.name}`}
+  description={`${owner.title} con ${owner.supportExperience}. Soporte informático en ${site.city} para particulares y pequeños negocios.`}
+>
+  <main>
+    <section class="mx-auto grid max-w-5xl gap-10 px-4 py-16 md:grid-cols-[18rem_1fr] md:items-start">
+      <Image
+        src={foto}
+        alt={`Retrato de ${owner.name}`}
+        width={576}
+        height={864}
+        loading="eager"
+        class="mx-auto aspect-[2/3] w-64 rounded-2xl border border-borde object-cover md:w-full"
+      />
+
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-acento">Sobre mí</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight">{owner.name}</h1>
+        <p class="mt-1 text-lg text-texto-suave">{owner.title}</p>
+
+        <p class="mt-6 text-lg text-texto-suave">
+          Soy ingeniero informático y llevo {owner.supportExperience.replace("experiencia en ", "trabajando en ")}.
+          En {site.name} combino dos mundos: el <strong class="text-texto">desarrollo de software</strong>
+          y el <strong class="text-texto">soporte informático</strong>. Eso me permite entender
+          los problemas de tu equipo tanto desde el hardware como desde el software.
+        </p>
+
+        <p class="mt-4 text-lg text-texto-suave">
+          Atiendo a particulares y pequeños negocios en {site.city}, a domicilio o con recogida del equipo.
+          Primero diagnostico para saber qué necesita tu equipo, y luego te presento la solución antes de empezar.
+        </p>
+
+        <h2 class="mt-8 text-2xl font-bold">Áreas de trabajo</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {areas.map((area) => (
+            <li class="rounded-full border border-borde bg-superficie px-3 py-1 text-sm text-texto-suave">
+              {area}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+</Layout>

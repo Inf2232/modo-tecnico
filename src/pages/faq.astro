@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import { faqs } from "../data/faq";
+import { site } from "../config/site";
+---
+
+<Layout
+  title="Preguntas frecuentes"
+  description={`Respuestas a las preguntas más comunes sobre nuestro servicio técnico de PC y notebooks en ${site.city}.`}
+>
+  <main>
+    <section class="mx-auto max-w-3xl px-4 py-16">
+      <h1 class="text-4xl font-bold tracking-tight">Preguntas frecuentes</h1>
+      <p class="mt-3 text-lg text-texto-suave">
+        Lo que más nos preguntan sobre cómo trabajamos.
+      </p>
+
+      <div class="mt-10 divide-y divide-borde rounded-xl border border-borde bg-superficie">
+        {faqs.map((faq) => (
+          <details class="group px-5 py-4">
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento"
+            >
+              {faq.question}
+              <span class="text-acento transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-texto-suave">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    <CTA />
+  </main>
+</Layout>

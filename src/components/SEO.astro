@@ -1,0 +1,37 @@
+---
+import { site, isDefined } from "../config/site";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+}
+
+const { title, description, image = "/og-image.png", type = "website" } = Astro.props;
+
+// Las URLs absolutas solo existen cuando ya hay dirección pública del sitio.
+const base = isDefined(site.url) ? site.url : null;
+const canonical = base ? new URL(Astro.url.pathname, base).href : null;
+const imageUrl = base ? new URL(image, base).href : null;
+---
+
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<meta name="description" content={description} />
+{canonical && <link rel="canonical" href={canonical} />}
+
+<meta property="og:site_name" content={site.name} />
+<meta property="og:type" content={type} />
+<meta property="og:locale" content="es_UY" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+{imageUrl && <meta property="og:image" content={imageUrl} />}
+{imageUrl && <meta property="og:image:alt" content={`Logo de ${site.name}`} />}
+
+<meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{imageUrl && <meta name="twitter:image" content={imageUrl} />}

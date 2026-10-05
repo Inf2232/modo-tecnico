@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import { projects } from "../data/projects";
+import { site } from "../config/site";
+
+const casos = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+
+const fecha = (iso: string) =>
+  new Intl.DateTimeFormat("es-UY", { month: "long", year: "numeric", timeZone: "UTC" }).format(
+    new Date(iso),
+  );
+---
+
+<Layout
+  title="Trabajos realizados"
+  description={`Casos reales de mantenimiento y soporte informático en ${site.city}: problema, trabajo realizado y resultado.`}
+>
+  <main>
+    <section class="mx-auto max-w-4xl px-4 py-16">
+      <h1 class="text-4xl font-bold tracking-tight">Trabajos realizados</h1>
+      <p class="mt-3 text-lg text-texto-suave">
+        Casos reales: qué problema tenía el equipo, qué se hizo y cuál fue el resultado.
+      </p>
+
+      {casos.length === 0 ? (
+        <p class="mt-10 rounded-xl border border-borde bg-superficie p-5 text-texto-suave">
+          Todavía estamos documentando nuestros primeros casos.
+        </p>
+      ) : (
+        <div class="mt-10 space-y-8">
+          {casos.map((caso) => (
+            <article class="rounded-xl border border-borde bg-superficie p-6">
+              <p class="text-sm text-texto-suave">
+                {caso.equipmentType} · <time datetime={caso.date}>{fecha(caso.date)}</time>
+              </p>
+              <h2 class="mt-1 text-2xl font-bold">{caso.title}</h2>
+
+              <dl class="mt-4 space-y-3">
+                <div>
+                  <dt class="text-sm font-semibold text-acento">Problema</dt>
+                  <dd class="text-texto-suave">{caso.problem}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-semibold text-acento">Diagnóstico</dt>
+                  <dd class="text-texto-suave">{caso.diagnosis}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-semibold text-acento">Trabajo realizado</dt>
+                  <dd class="text-texto-suave">{caso.work}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-semibold text-acento">Resultado</dt>
+                  <dd class="text-texto-suave">{caso.result}</dd>
+                </div>
+              </dl>
+
+              {caso.images && caso.images.length > 0 && (
+                <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                  {caso.images.map((img) => (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={600}
+                      class="w-full rounded-lg border border-borde"
+                    />
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+    <CTA />
+  </main>
+</Layout>

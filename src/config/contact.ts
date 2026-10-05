@@ -6,7 +6,7 @@ export const contact = {
   email: "carlospescoso03@gmail.com",
   location: "Montevideo, Uruguay",
   serviceArea: "Cordon y alrededores",
-   serviceModes: ["A domicilio", "Recogida del equipo"], // revisar el texto
+  serviceModes: ["A domicilio", "Recogida del equipo"], // revisar el texto
   address: PENDING, // solo si atiendes en un local; si no, déjalo así
   mapsUrl: "https://maps.app.goo.gl/wTzxRMnEuf34wN9J8", // enlace de Google Maps / ficha de Google Business Profile
   hours: PENDING,

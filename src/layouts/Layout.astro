@@ -1,15 +1,18 @@
 ---
 import "../styles/global.css";
-import { site } from "../config/site";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+import { site } from "../config/site";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
-const { title, description = site.description } = Astro.props;
+const { title, description = site.description, image, type } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : site.name;
 ---
 
@@ -19,9 +22,9 @@ const fullTitle = title ? `${title} | ${site.name}` : site.name;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <SEO title={fullTitle} description={description} image={image} type={type} />
   </head>
-  <body class="bg-fondo text-texto">
+  <body class="flex min-h-screen flex-col bg-fondo text-texto">
     <Header />
     <slot />
     <Footer />

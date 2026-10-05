@@ -1,5 +1,5 @@
 export const PENDING = "[POR DEFINIR]";
-
+import { projects } from "../data/projects";
 export const site = {
   name: "Modo Técnico",
   description:
@@ -13,9 +13,17 @@ export const site = {
 export const nav = [
   { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
-  { label: "Trabajos", href: "/trabajos" },
-  { label: "Blog", href: "/blog" },
+  ...(projects.length > 0 ? [{ label: "Trabajos", href: "/trabajos" }] : []),
   { label: "Sobre mí", href: "/sobre-mi" },
+  { label: "Preguntas", href: "/faq" },
   { label: "Contacto", href: "/contacto" },
-] as const;
+];
+
 export const isDefined = (value: string) => value !== PENDING;
+
+
+export const owner = {
+  name: "Carlos Alejandro Pescoso Reyes",
+  title: "Ingeniero Informático",
+  supportExperience: "2 años de experiencia en soporte técnico",
+} as const;
