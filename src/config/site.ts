@@ -18,3 +18,4 @@ export const nav = [
   { label: "Sobre mí", href: "/sobre-mi" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
+export const isDefined = (value: string) => value !== PENDING;

@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { site } from "../config/site";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -21,7 +22,8 @@ const fullTitle = title ? `${title} | ${site.name}` : site.name;
     <meta name="description" content={description} />
   </head>
   <body class="bg-fondo text-texto">
-  <Header />
-  <slot />
-</body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>

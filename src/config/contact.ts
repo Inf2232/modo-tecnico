@@ -1,11 +1,11 @@
 import { PENDING } from "./site";
 
 export const contact = {
-  whatsapp: PENDING, // formato internacional sin "+" ni espacios
-  phone: PENDING,
-  email: PENDING,
+  whatsapp: "99214670", // formato internacional sin "+" ni espacios
+  phone: "+598 99214670", // formato internacional con "+" y espacios
+  email: "carlospescoso03@gmail.com",
   location: "Montevideo, Uruguay",
-  serviceArea: PENDING,
+  serviceArea: "Cordon y alrededores",
   hours: PENDING,
   social: {
     instagram: PENDING,
