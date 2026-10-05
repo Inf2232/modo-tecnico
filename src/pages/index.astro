@@ -1,17 +1,16 @@
 ---
-
+import "../styles/global.css";
+import { site } from "../config/site";
+import Contador from "../components/Contador";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prueba</title>
+  </head>
+  <body class="bg-slate-900 p-8 text-white">
+    <h1 class="mb-4 text-3xl font-bold">{site.name} · {site.city}</h1>
+    <Contador client:load />
+  </body>
 </html>
