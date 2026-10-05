@@ -1,0 +1,33 @@
+---
+import { whatsappLink } from "../lib/whatsapp";
+
+interface Props {
+  label?: string;
+  message?: string;
+  variant?: "primary" | "outline";
+}
+
+const { label = "Consultar por WhatsApp", message, variant = "primary" } = Astro.props;
+
+const href = whatsappLink(message);
+const external = href.startsWith("https://");
+
+const styles = {
+  primary:
+    "bg-primario text-white hover:bg-acento hover:text-fondo",
+  outline:
+    "border border-borde hover:border-acento hover:text-acento",
+};
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+  class:list={[
+    "inline-block rounded-lg px-6 py-3 text-center font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento",
+    styles[variant],
+  ]}
+>
+  {label}
+</a>

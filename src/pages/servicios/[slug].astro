@@ -3,6 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 import CTA from "../../components/CTA.astro";
 import { services, formatPrice, type Service } from "../../data/services";
 import { site } from "../../config/site";
+import ListSection from "../../components/ListSection.astro";
+
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import { contact } from "../../config/contact";
+import { isDefined } from "../../config/site";
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -49,6 +54,16 @@ const { service } = Astro.props;
           </div>
         )}
       </dl>
+        <ListSection id="incluye" title="Qué incluye" items={service.includes} />
+        <ListSection id="conviene" title="Cuándo conviene" items={service.idealFor} />
+         {isDefined(contact.whatsapp) && (
+        <div class="mt-10">
+          <WhatsAppButton
+            label="Quiero un presupuesto"
+            message={`Hola, quiero pedir un presupuesto para: ${service.name}.`}
+          />
+        </div>
+      )}
     </article>
 
     <CTA

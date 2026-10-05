@@ -1,6 +1,7 @@
 ---
 import { site, nav, isDefined } from "../config/site";
 import { contact } from "../config/contact";
+import { whatsappLink } from "../lib/whatsapp";
 
 const year = new Date().getFullYear();
 
@@ -10,9 +11,7 @@ const redes = [
   { label: "GitHub", href: contact.social.github },
 ].filter((red) => isDefined(red.href));
 
-const whatsappHref = isDefined(contact.whatsapp)
-  ? `https://wa.me/${contact.whatsapp}`
-  : null;
+
 ---
 
 <footer class="mt-auto border-t border-borde bg-superficie">
@@ -48,9 +47,9 @@ const whatsappHref = isDefined(contact.whatsapp)
         {isDefined(contact.email) && (
           <li><a href={`mailto:${contact.email}`} class="hover:text-acento">{contact.email}</a></li>
         )}
-        {whatsappHref && (
-          <li><a href={whatsappHref} class="hover:text-acento">WhatsApp</a></li>
-        )}
+       {isDefined(contact.whatsapp) && (
+  <li><a href={whatsappLink()} class="hover:text-acento">WhatsApp</a></li>
+)}
       </ul>
     </div>
 

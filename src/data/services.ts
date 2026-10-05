@@ -13,6 +13,8 @@ export interface Service {
   duration: string | null;
   category: ServiceCategory;
   featured: boolean;
+  includes?: string[]; // qué incluye el servicio
+  idealFor?: string[]; // cuándo conviene contratarlo
 }
 
 export const currencyLabel = "$U";
@@ -44,12 +46,23 @@ export const services: Service[] = [
   {
     name: "Limpieza y mantenimiento de PC",
     slug: "mantenimiento-pc",
-    description:
-      "Limpieza interna, eliminación de polvo, revisión de ventilación y mantenimiento preventivo de tu PC.",
-    priceFrom: 1400,
-    duration: "1 a 2 horas",
+    description: "Limpieza interna y revisión general de tu PC de escritorio.",
+    priceFrom: 1600,
+    duration: null,
     category: "mantenimiento",
     featured: true,
+    // BORRADOR: confirma o edita según lo que realmente haces.
+    includes: [
+      "Limpieza interna de polvo",
+      "Revisión de los ventiladores",
+      "Revisión de las temperaturas",
+      "Revisión general del estado del equipo",
+    ],
+    idealFor: [
+      "El equipo hace más ruido de lo normal",
+      "Se calienta más de lo habitual",
+      "Hace mucho tiempo que no recibe mantenimiento",
+    ],
   },
 
   {
@@ -57,7 +70,7 @@ export const services: Service[] = [
     slug: "mantenimiento-notebook",
     description:
       "Limpieza interna, mantenimiento del sistema de refrigeración y revisión general de tu notebook.",
-    priceFrom: 1600,
+    priceFrom: 1700,
     duration: "1 a 2 horas",
     category: "mantenimiento",
     featured: true,

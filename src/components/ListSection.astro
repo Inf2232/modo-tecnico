@@ -1,0 +1,18 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  items?: string[];
+}
+
+const { id, title, items = [] } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class="mt-10" aria-labelledby={id}>
+    <h2 id={id} class="text-2xl font-bold">{title}</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-texto-suave marker:text-acento">
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+)}

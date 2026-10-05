@@ -1,16 +1,19 @@
 ---
+import WhatsAppButton from "./WhatsAppButton.astro";
+import { messages } from "../lib/whatsapp";
+import { contact } from "../config/contact";
+import { isDefined } from "../config/site";
+
 interface Props {
   title?: string;
   text?: string;
-  href?: string;
-  label?: string;
+  message?: string;
 }
 
 const {
   title = "¿Tu PC o notebook está dando problemas?",
   text = "Cuéntanos qué pasa y te orientamos sobre los próximos pasos.",
-  href = "/contacto",
-  label = "Solicitar diagnóstico",
+  message = messages.consulta,
 } = Astro.props;
 ---
 
@@ -20,11 +23,16 @@ const {
   >
     <h2 id="cta-titulo" class="text-3xl font-bold">{title}</h2>
     <p class="mx-auto mt-3 max-w-xl text-texto-suave">{text}</p>
-    <a
-      href={href}
-      class="mt-6 inline-block rounded-lg bg-primario px-6 py-3 font-semibold text-white transition-colors hover:bg-acento hover:text-fondo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
-    >
-      {label}
-    </a>
+    <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+      <a
+        href="/contacto"
+        class="inline-block rounded-lg bg-primario px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-acento hover:text-fondo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
+      >
+        Solicitar diagnóstico
+      </a>
+      {isDefined(contact.whatsapp) && (
+        <WhatsAppButton variant="outline" message={message} />
+      )}
+    </div>
   </div>
 </section>
