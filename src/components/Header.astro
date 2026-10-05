@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import { site, nav } from "../config/site";
+---
+
+<header class="sticky top-0 z-50 border-b border-borde bg-fondo/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <a href="/" class="flex items-center gap-3" aria-label={`${site.name}, ir al inicio`}>
+      <Image src={logo} alt="" width={44} height={44} loading="eager" />
+      <span class="text-lg font-bold">{site.name}</span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden md:block">
+      <ul class="flex items-center gap-6">
+        {nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-texto-suave transition-colors hover:text-acento focus-visible:text-acento"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="/contacto"
+        class="hidden rounded-lg bg-primario px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-acento hover:text-fondo sm:inline-block"
+      >
+        Solicitar diagnóstico
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="rounded-lg border border-borde p-2 text-texto md:hidden"
+        aria-expanded="false"
+        aria-controls="menu-movil"
+        aria-label="Abrir menú"
+      >
+        <svg id="icono-abrir" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icono-cerrar" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="menu-movil" class="hidden border-t border-borde bg-fondo md:hidden">
+    <nav aria-label="Móvil" class="mx-auto max-w-6xl px-4 py-4">
+      <ul class="flex flex-col gap-1">
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} class="block rounded-lg px-3 py-3 text-texto hover:bg-superficie hover:text-acento">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="/contacto"
+        class="mt-4 block rounded-lg bg-primario px-4 py-3 text-center font-semibold text-white hover:bg-acento hover:text-fondo"
+      >
+        Solicitar diagnóstico
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const boton = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu-movil");
+  const iconoAbrir = document.getElementById("icono-abrir");
+  const iconoCerrar = document.getElementById("icono-cerrar");
+
+  function alternarMenu(abrir: boolean) {
+    boton?.setAttribute("aria-expanded", String(abrir));
+    boton?.setAttribute("aria-label", abrir ? "Cerrar menú" : "Abrir menú");
+    menu?.classList.toggle("hidden", !abrir);
+    iconoAbrir?.classList.toggle("hidden", abrir);
+    iconoCerrar?.classList.toggle("hidden", !abrir);
+  }
+
+  boton?.addEventListener("click", () => {
+    const abierto = boton.getAttribute("aria-expanded") === "true";
+    alternarMenu(!abierto);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") alternarMenu(false);
+  });
+</script>

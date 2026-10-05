@@ -9,3 +9,12 @@ export const site = {
   country: "Uruguay",
   language: "es",
 } as const;
+
+export const nav = [
+  { label: "Inicio", href: "/" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Trabajos", href: "/trabajos" },
+  { label: "Blog", href: "/blog" },
+  { label: "Sobre mí", href: "/sobre-mi" },
+  { label: "Contacto", href: "/contacto" },
+] as const;
