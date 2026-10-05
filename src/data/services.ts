@@ -41,6 +41,16 @@ export const services: Service[] = [
     duration: "A coordinar",
     category: "diagnostico",
     featured: true,
+    includes: [
+      "Revisión del estado general del equipo",
+      "Identificación de la causa probable del problema",
+      "Recomendación de la solución más adecuada",
+    ],
+    idealFor: [
+      "Tu equipo falla y no sabes por qué",
+      "Quieres saber qué necesita antes de decidir",
+      "Necesitas una segunda opinión sobre un problema",
+    ],
   },
 
   {
@@ -51,7 +61,6 @@ export const services: Service[] = [
     duration: null,
     category: "mantenimiento",
     featured: true,
-    // BORRADOR: confirma o edita según lo que realmente haces.
     includes: [
       "Limpieza interna de polvo",
       "Revisión de los ventiladores",
@@ -74,6 +83,16 @@ export const services: Service[] = [
     duration: "1 a 2 horas",
     category: "mantenimiento",
     featured: true,
+    includes: [
+      "Limpieza interna del equipo",
+      "Mantenimiento del sistema de refrigeración",
+      "Revisión general del estado de la notebook",
+    ],
+    idealFor: [
+      "La notebook se calienta más de lo habitual",
+      "El ventilador hace ruido o suena forzado",
+      "Hace mucho tiempo que no recibe mantenimiento",
+    ],
   },
 
   {
@@ -85,6 +104,15 @@ export const services: Service[] = [
     duration: "30 a 90 min",
     category: "mantenimiento",
     featured: false,
+    includes: [
+      "Retiro de la pasta térmica anterior",
+      "Aplicación de pasta térmica nueva",
+      "Comprobación de las temperaturas después del cambio",
+    ],
+    idealFor: [
+      "Las temperaturas del procesador son altas",
+      "La pasta térmica lleva muchos años sin renovarse",
+    ],
   },
 
   {
@@ -96,6 +124,16 @@ export const services: Service[] = [
     duration: "1 a 2 horas",
     category: "software",
     featured: true,
+    includes: [
+      "Revisión de lo que se ejecuta al iniciar el sistema",
+      "Ajustes de configuración para mejorar el rendimiento",
+      "Revisión general del funcionamiento del equipo",
+    ],
+    idealFor: [
+      "El equipo tarda mucho en iniciar",
+      "El sistema se siente lento al usarlo",
+      "Quieres mejorar el rendimiento antes de pensar en cambiar de equipo",
+    ],
   },
 
   {
@@ -107,6 +145,16 @@ export const services: Service[] = [
     duration: "1 a 2 horas",
     category: "hardware",
     featured: true,
+    includes: [
+      "Comprobación de que el SSD es compatible con tu equipo",
+      "Instalación física de la unidad",
+      "Configuración de la unidad",
+    ],
+    idealFor: [
+      "Tu equipo todavía usa un disco duro mecánico (HDD)",
+      "El equipo tarda en iniciar y en abrir programas",
+      "Quieres más almacenamiento o una unidad más rápida",
+    ],
   },
 
   {
@@ -118,6 +166,14 @@ export const services: Service[] = [
     duration: "2 a 4 horas",
     category: "hardware",
     featured: false,
+    includes: [
+      "Copia del sistema y de los archivos a la nueva unidad",
+      "Comprobación de que el equipo inicia desde la nueva unidad",
+    ],
+    idealFor: [
+      "Vas a cambiar tu disco por un SSD y quieres conservar tu sistema",
+      "Quieres pasar a una unidad más grande sin reinstalar todo",
+    ],
   },
 
   {
@@ -129,6 +185,15 @@ export const services: Service[] = [
     duration: "30 a 60 min",
     category: "hardware",
     featured: false,
+    includes: [
+      "Comprobación de compatibilidad de la memoria con tu equipo",
+      "Instalación de la memoria RAM",
+      "Comprobación de que el equipo la reconoce y funciona",
+    ],
+    idealFor: [
+      "El equipo se pone lento al abrir varios programas",
+      "Quieres ampliar la memoria de tu equipo",
+    ],
   },
 
   {
@@ -140,6 +205,17 @@ export const services: Service[] = [
     duration: "2 a 4 horas",
     category: "software",
     featured: true,
+    includes: [
+      "Instalación de Windows",
+      "Instalación de los controladores (drivers)",
+      "Configuración inicial del equipo",
+      "La licencia de Windows no está incluida",
+    ],
+    idealFor: [
+      "El sistema falla o está muy lento",
+      "Tienes un equipo nuevo o un disco nuevo sin sistema",
+      "Quieres empezar de cero con el equipo limpio",
+    ],
   },
 
   {
@@ -151,6 +227,15 @@ export const services: Service[] = [
     duration: "2 a 3 horas",
     category: "software",
     featured: false,
+    includes: [
+      "Elección de una distribución adecuada para tu equipo y tus necesidades",
+      "Instalación de Linux",
+      "Instalación de los controladores y configuración inicial",
+    ],
+    idealFor: [
+      "Quieres probar o pasarte a Linux",
+      "Quieres darle otro uso a un equipo que ya no rinde con su sistema actual",
+    ],
   },
 
   {
@@ -162,6 +247,15 @@ export const services: Service[] = [
     duration: "30 a 60 min",
     category: "software",
     featured: false,
+    includes: [
+      "Identificación de los controladores que faltan o están desactualizados",
+      "Instalación y actualización de los controladores",
+      "Comprobación del funcionamiento de los dispositivos",
+    ],
+    idealFor: [
+      "Falta el sonido, la red, el vídeo u otro dispositivo después de instalar el sistema",
+      "Windows muestra dispositivos sin reconocer",
+    ],
   },
 
   {
@@ -173,6 +267,16 @@ export const services: Service[] = [
     duration: "30 a 90 min",
     category: "software",
     featured: false,
+    includes: [
+      "Instalación de los programas que necesitas",
+      "Configuración inicial según tu uso",
+      "Las licencias no están incluidas",
+    ],
+    idealFor: [
+      "Tienes un equipo nuevo o recién reinstalado",
+      "Necesitas programas de trabajo o estudio ya configurados",
+      "No sabes cómo instalar o configurar un programa",
+    ],
   },
 
   {
@@ -184,6 +288,16 @@ export const services: Service[] = [
     duration: "1 a 2 horas",
     category: "software",
     featured: false,
+    includes: [
+      "Análisis del equipo en busca de malware y programas no deseados",
+      "Eliminación de lo que se detecte",
+      "Revisión de configuraciones que afecten el funcionamiento",
+    ],
+    idealFor: [
+      "Aparece publicidad o ventanas emergentes inesperadas",
+      "El navegador cambió su página de inicio o su buscador",
+      "El equipo se volvió lento sin una causa clara",
+    ],
   },
 
   {
@@ -195,6 +309,16 @@ export const services: Service[] = [
     duration: "30 a 60 min",
     category: "software",
     featured: false,
+    includes: [
+      "Instalación de la impresora, el escáner o el periférico",
+      "Instalación de los controladores",
+      "Configuración y prueba de funcionamiento",
+    ],
+    idealFor: [
+      "Compraste una impresora o un periférico nuevo",
+      "Tu equipo no reconoce la impresora",
+      "Cambiaste de equipo y la impresora dejó de funcionar",
+    ],
   },
 
   {
@@ -206,6 +330,16 @@ export const services: Service[] = [
     duration: "1 a 3 horas",
     category: "software",
     featured: false,
+    includes: [
+      "Copia de documentos, fotografías y otros archivos",
+      "Transferencia entre equipos o unidades de almacenamiento",
+      "Comprobación de que los archivos quedaron copiados",
+    ],
+    idealFor: [
+      "Cambias de equipo y quieres llevar tus archivos",
+      "Quieres hacer una copia de seguridad de tus archivos",
+      "Vas a reinstalar el sistema y no quieres perder tus archivos",
+    ],
   },
 
   {
@@ -217,5 +351,14 @@ export const services: Service[] = [
     duration: "Por hora",
     category: "remoto",
     featured: true,
+    includes: [
+      "Asistencia a distancia sobre tu equipo",
+      "Resolución de problemas de software y de configuración",
+    ],
+    idealFor: [
+      "El problema es de software o de configuración",
+      "No puedes o no quieres trasladar el equipo",
+      "Tienes una duda puntual de uso",
+    ],
   },
 ];
