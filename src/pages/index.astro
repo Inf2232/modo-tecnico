@@ -1,16 +1,8 @@
 ---
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 import { site } from "../config/site";
-import Contador from "../components/Contador";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Prueba</title>
-  </head>
-  <body class="bg-slate-900 p-8 text-white">
-    <h1 class="mb-4 text-3xl font-bold">{site.name} · {site.city}</h1>
-    <Contador client:load />
-  </body>
-</html>
+<Layout title="Servicio técnico de PC y notebooks en Montevideo">
+  <h1 class="p-8 text-3xl font-bold">{site.name} · {site.city}</h1>
+</Layout>
