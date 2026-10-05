@@ -1,0 +1,21 @@
+---
+import { formatPrice, type Service } from "../data/services";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<article
+  class="relative flex h-full flex-col rounded-xl border border-borde bg-superficie p-5 transition-colors hover:border-acento focus-within:border-acento"
+>
+  <h3 class="text-lg font-semibold">
+    <a href={`/servicios/${service.slug}`} class="after:absolute after:inset-0">
+      {service.name}
+    </a>
+  </h3>
+  <p class="mt-2 flex-1 text-sm text-texto-suave">{service.description}</p>
+  <p class="mt-4 text-sm font-semibold text-acento">{formatPrice(service)}</p>
+</article>

@@ -1,0 +1,18 @@
+---
+import type { Service } from "../data/services";
+import ServiceCard from "./ServiceCard.astro";
+
+interface Props {
+  services: Service[];
+}
+
+const { services } = Astro.props;
+---
+
+<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {services.map((service) => (
+    <li>
+      <ServiceCard service={service} />
+    </li>
+  ))}
+</ul>

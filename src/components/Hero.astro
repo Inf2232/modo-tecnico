@@ -1,0 +1,49 @@
+---
+const especialidades = ["Windows", "Linux", "PC y notebooks", "Soporte remoto"];
+---
+
+<section
+  class="bg-[radial-gradient(ellipse_at_top,rgba(10,132,255,0.18),transparent_60%)]"
+  aria-labelledby="hero-titulo"
+>
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+    <p class="text-sm font-semibold uppercase tracking-widest text-acento">
+      Informática práctica
+    </p>
+
+    <h1
+      id="hero-titulo"
+      class="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+    >
+      Servicio técnico de <span class="text-acento">PC y notebooks</span> en Montevideo
+    </h1>
+
+    <p class="mt-6 max-w-2xl text-lg text-texto-suave">
+      Diagnóstico, mantenimiento, optimización y soporte informático para
+      particulares y pequeños negocios.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="/contacto"
+        class="rounded-lg bg-primario px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-acento hover:text-fondo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
+      >
+        Solicitar diagnóstico
+      </a>
+      <a
+        href="/servicios"
+        class="rounded-lg border border-borde px-6 py-3 text-center font-semibold transition-colors hover:border-acento hover:text-acento focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
+      >
+        Ver servicios
+      </a>
+    </div>
+
+    <ul class="mt-10 flex flex-wrap gap-2" aria-label="Áreas de trabajo">
+      {especialidades.map((item) => (
+        <li class="rounded-full border border-borde bg-superficie px-3 py-1 text-sm text-texto-suave">
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CTA from "../../components/CTA.astro";
+import { services, formatPrice, type Service } from "../../data/services";
+import { site } from "../../config/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<Layout
+  title={`${service.name} en ${site.city}`}
+  description={service.description}
+>
+  <main>
+    <article class="mx-auto max-w-3xl px-4 py-16">
+      <nav aria-label="Migas de pan" class="text-sm text-texto-suave">
+        <a href="/" class="hover:text-acento">Inicio</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/servicios" class="hover:text-acento">Servicios</a>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">{service.name}</span>
+      </nav>
+
+      <h1 class="mt-6 text-4xl font-bold tracking-tight">
+        {service.name} en {site.city}
+      </h1>
+      <p class="mt-4 text-lg text-texto-suave">{service.description}</p>
+
+      <dl class="mt-8 grid gap-4 rounded-xl border border-borde bg-superficie p-5 sm:grid-cols-2">
+        <div>
+          <dt class="text-sm text-texto-suave">Precio</dt>
+          <dd class="font-semibold text-acento">{formatPrice(service)}</dd>
+        </div>
+        {service.duration && (
+          <div>
+            <dt class="text-sm text-texto-suave">Duración estimada</dt>
+            <dd class="font-semibold">{service.duration}</dd>
+          </div>
+        )}
+      </dl>
+    </article>
+
+    <CTA
+      title={`¿Necesitas ${service.name.toLowerCase()}?`}
+      text="Cuéntanos qué necesitas y te orientamos sobre los próximos pasos."
+    />
+  </main>
+</Layout>

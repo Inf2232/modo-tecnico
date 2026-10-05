@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ServiceGrid from "../../components/ServiceGrid.astro";
+import CTA from "../../components/CTA.astro";
+import { services } from "../../data/services";
+import { site } from "../../config/site";
+---
+
+<Layout
+  title={`Servicios informáticos en ${site.city}`}
+  description={`Diagnóstico, mantenimiento, instalación de SSD y RAM, Windows, Linux y soporte remoto para particulares y pequeños negocios en ${site.city}.`}
+>
+  <main>
+    <section class="mx-auto max-w-6xl px-4 py-16">
+      <h1 class="text-4xl font-bold tracking-tight">Servicios informáticos en {site.city}</h1>
+      <p class="mt-3 max-w-2xl text-lg text-texto-suave">
+        Soluciones para tu PC o notebook, desde el diagnóstico hasta el mantenimiento y la instalación.
+      </p>
+      <div class="mt-10">
+        <ServiceGrid services={services} />
+      </div>
+    </section>
+    <CTA />
+  </main>
+</Layout>

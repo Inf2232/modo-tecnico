@@ -1,17 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { site } from "../config/site";
+import Hero from "../components/Hero.astro";
+import ServiceGrid from "../components/ServiceGrid.astro";
+import ProcessSection from "../components/ProcessSection.astro";
+import WhyUs from "../components/WhyUs.astro";
+import { services } from "../data/services";
+import CTA from "../components/CTA.astro";
+
+const destacados = services.filter((s) => s.featured);
 ---
 
 <Layout title="Servicio técnico de PC y notebooks en Montevideo">
-  <main class="p-8">
-    <h1 class="text-3xl font-bold">{site.name} · {site.city}</h1>
-    <p class="mt-2 text-texto-suave">Informática práctica</p>
-    <a
-      href="#"
-      class="mt-6 inline-block rounded-lg bg-primario px-5 py-3 font-semibold text-white hover:bg-acento hover:text-fondo"
-    >
-      Solicitar diagnóstico
-    </a>
+  <main>
+    <Hero />
+
+    <section class="mx-auto max-w-6xl px-4 py-16" aria-labelledby="servicios-titulo">
+      <h2 id="servicios-titulo" class="text-3xl font-bold">Soluciones para tu equipo</h2>
+      <p class="mt-2 text-texto-suave">Estos son algunos de los servicios principales.</p>
+      <div class="mt-8">
+        <ServiceGrid services={destacados} />
+      </div>
+      <a href="/servicios" class="mt-8 inline-block font-semibold text-acento hover:underline">
+        Ver todos los servicios →
+      </a>
+    </section>
+
+    <ProcessSection />
+    <WhyUs />
+    <CTA />
   </main>
 </Layout>

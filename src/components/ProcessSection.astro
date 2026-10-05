@@ -1,0 +1,29 @@
+---
+const pasos = [
+  { titulo: "Cuéntanos el problema", texto: "Describe qué le pasa a tu equipo, por el formulario o por WhatsApp." },
+  { titulo: "Diagnosticamos", texto: "Revisamos el equipo para identificar la causa del problema." },
+  { titulo: "Te presentamos la solución", texto: "Te explicamos qué hace falta hacer antes de empezar." },
+  { titulo: "Realizamos el trabajo", texto: "Hacemos el mantenimiento o la reparación acordada." },
+  { titulo: "Entregamos el equipo", texto: "Te entregamos el equipo y te contamos qué se hizo." },
+];
+---
+
+<section class="border-y border-borde bg-superficie" aria-labelledby="proceso-titulo">
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <h2 id="proceso-titulo" class="text-3xl font-bold">¿Cómo trabajamos?</h2>
+    <ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {pasos.map((paso, i) => (
+        <li class="rounded-xl border border-borde bg-fondo p-5">
+          <span
+            class="flex h-8 w-8 items-center justify-center rounded-full bg-primario text-sm font-bold text-fondo"
+            aria-hidden="true"
+          >
+            {i + 1}
+          </span>
+          <h3 class="mt-3 font-semibold">{paso.titulo}</h3>
+          <p class="mt-1 text-sm text-texto-suave">{paso.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
