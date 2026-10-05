@@ -1,43 +1,48 @@
-# Astro Starter Kit: Minimal
+# Modo Técnico
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Sitio web profesional de **Modo Técnico**, servicio de soporte técnico,
+mantenimiento y asistencia informática en Montevideo, Uruguay.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> Proyecto en desarrollo.
 
-## 🚀 Project Structure
+## Objetivo
 
-Inside of your Astro project, you'll see the following folders and files:
+- Captar clientes reales para servicios informáticos, con contacto por WhatsApp.
+- Servir como proyecto demostrable de portafolio.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Stack
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- [Astro](https://astro.build) (páginas estáticas)
+- React (solo componentes interactivos)
+- TypeScript
+- Tailwind CSS
+- Despliegue previsto en Cloudflare Pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Desarrollo local
 
-Any static assets, like images, can be placed in the `public/` directory.
+Requisitos: Node.js 20 o superior.
 
-## 🧞 Commands
+    npm install
+    npm run dev
 
-All commands are run from the root of the project, from a terminal:
+El sitio queda disponible en http://localhost:4321
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Comandos
 
-## 👀 Want to learn more?
+| Comando           | Acción                          |
+| ----------------- | ------------------------------- |
+| `npm run dev`     | Servidor de desarrollo          |
+| `npm run build`   | Genera el sitio en `dist/`      |
+| `npm run preview` | Previsualiza el build           |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Estructura
+
+    src/
+    ├── assets/       # imágenes
+    ├── components/   # componentes .astro y .tsx
+    ├── config/       # site.ts, contact.ts (datos centralizados)
+    ├── content/      # artículos del blog
+    ├── data/         # servicios, FAQ, proyectos
+    ├── layouts/      # plantillas de página
+    ├── pages/        # rutas
+    └── styles/       # estilos globales
