@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CTA from "../../components/CTA.astro";
+import { site } from "../../config/site";
+
+// En desarrollo se ven los borradores; en producción, no.
+const posts = (await getCollection("blog", ({ data }) => import.meta.env.DEV || !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const fecha = (d: Date) =>
+  new Intl.DateTimeFormat("es-UY", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(d);
+---
+
+<Layout
+  title="Blog"
+  description={`Consejos de mantenimiento, Windows, Linux y soporte informático desde ${site.city}.`}
+>
+  <main>
+    <section class="mx-auto max-w-3xl px-4 py-16">
+      <h1 class="text-4xl font-bold tracking-tight">Blog</h1>
+      <p class="mt-3 text-lg text-texto-suave">
+        Consejos prácticos sobre mantenimiento, Windows, Linux y soporte informático.
+      </p>
+
+      {posts.length === 0 ? (
+        <p class="mt-10 rounded-xl border border-borde bg-superficie p-5 text-texto-suave">
+          Pronto publicaremos los primeros artículos.
+        </p>
+      ) : (
+        <ul class="mt-10 space-y-4">
+          {posts.map((post) => (
+            <li>
+              <article class="relative rounded-xl border border-borde bg-superficie p-5 transition-colors hover:border-acento focus-within:border-acento">
+                <p class="text-sm text-texto-suave">
+                  {post.data.category} · <time datetime={post.data.date.toISOString()}>{fecha(post.data.date)}</time>
+                  {post.data.draft && <span class="ml-2 rounded bg-borde px-2 py-0.5 text-xs">Borrador</span>}
+                </p>
+                <h2 class="mt-1 text-xl font-semibold">
+                  <a href={`/blog/${post.id}`} class="after:absolute after:inset-0">{post.data.title}</a>
+                </h2>
+                <p class="mt-2 text-texto-suave">{post.data.description}</p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+    <CTA />
+  </main>
+</Layout>

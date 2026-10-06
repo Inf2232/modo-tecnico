@@ -1,10 +1,11 @@
 export const PENDING = "[POR DEFINIR]";
 import { projects } from "../data/projects";
+export const features = { blog: true };
 export const site = {
   name: "Modo Técnico",
   description:
     "Servicio técnico, mantenimiento y soporte informático en Montevideo, Uruguay.",
-  url: PENDING, // se completa cuando tengamos dominio o URL de Cloudflare Pages
+  url: "https://modo-tecnico.carlospescoso03.workers.dev/", // se completa cuando tengamos dominio o URL de Cloudflare Pages
   city: "Montevideo",
   country: "Uruguay",
   language: "es",
@@ -15,6 +16,7 @@ export const nav = [
   { label: "Servicios", href: "/servicios" },
   ...(projects.length > 0 ? [{ label: "Trabajos", href: "/trabajos" }] : []),
   { label: "Sobre mí", href: "/sobre-mi" },
+  { label: "Blog", href: "/blog" },
   { label: "Preguntas", href: "/faq" },
   { label: "Contacto", href: "/contacto" },
 ];
