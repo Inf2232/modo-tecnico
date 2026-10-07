@@ -35,3 +35,7 @@ const imageUrl = base ? new URL(image, base).href : null;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+
+{isDefined(site.googleSiteVerification) && (
+  <meta name="google-site-verification" content={site.googleSiteVerification} />
+)}

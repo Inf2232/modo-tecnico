@@ -1,6 +1,8 @@
 export const PENDING = "[POR DEFINIR]";
 import { projects } from "../data/projects";
 export const features = { blog: true };
+
+googleSiteVerification: "a3T1zRWALlG6UxHAuP_iPx-t2h-jcxCyDqmDk9mZrCo"
 export const site = {
   name: "Modo Técnico",
   description:
