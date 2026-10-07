@@ -5,7 +5,7 @@ export const site = {
   name: "Modo Técnico",
   description:
     "Servicio técnico, mantenimiento y soporte informático en Montevideo, Uruguay.",
-  url: "https://modo-tecnico.carlospescoso03.workers.dev/", // se completa cuando tengamos dominio o URL de Cloudflare Pages
+  url: import.meta.env.SITE ?? PENDING, // se completa cuando tengamos dominio o URL de Cloudflare Pages
   city: "Montevideo",
   country: "Uruguay",
   language: "es",
