@@ -4,8 +4,12 @@ import type { Service } from "../data/services";
 import type { Faq } from "../data/faq";
 
 // URL absoluta a partir de una ruta.
-const absolute = (path: string) =>
-  isDefined(site.url) ? new URL(path, site.url).href : path;
+const absolute = (path: string) => {
+  if (!isDefined(site.url)) return path;
+  // Rutas de página con barra final; los archivos (con punto) se dejan igual.
+  const conBarra = path.endsWith("/") || path.includes(".") ? path : `${path}/`;
+  return new URL(conBarra, site.url).href;
+};
 
 const area = { "@type": "City", name: site.city };
 

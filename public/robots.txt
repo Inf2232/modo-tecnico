@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://modo-tecnico.carlospescoso03.workers.dev/sitemap.xml
