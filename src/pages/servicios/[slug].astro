@@ -9,6 +9,9 @@ import WhatsAppButton from "../../components/WhatsAppButton.astro";
 import { contact } from "../../config/contact";
 import { isDefined } from "../../config/site";
 
+import JsonLd from "../../components/JsonLd.astro";
+import { serviceSchema, breadcrumbSchema } from "../../lib/schema";
+
 export function getStaticPaths() {
   return services.map((service) => ({
     params: { slug: service.slug },
@@ -27,6 +30,14 @@ const { service } = Astro.props;
   title={`${service.name} en ${site.city}`}
   description={service.description}
 >
+  <JsonLd data={serviceSchema(service)} />
+  <JsonLd
+    data={breadcrumbSchema([
+      { name: "Inicio", path: "/" },
+      { name: "Servicios", path: "/servicios" },
+      { name: service.name, path: `/servicios/${service.slug}` },
+    ])}
+  />
   <main>
     <article class="mx-auto max-w-3xl px-4 py-16">
       <nav aria-label="Migas de pan" class="text-sm text-texto-suave">

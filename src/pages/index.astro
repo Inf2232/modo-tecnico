@@ -6,11 +6,14 @@ import ProcessSection from "../components/ProcessSection.astro";
 import WhyUs from "../components/WhyUs.astro";
 import { services } from "../data/services";
 import CTA from "../components/CTA.astro";
+import JsonLd from "../components/JsonLd.astro";
+import { businessSchema } from "../lib/schema";
 
 const destacados = services.filter((s) => s.featured);
 ---
 
 <Layout title="Servicio técnico de PC y notebooks en Montevideo">
+  <JsonLd data={businessSchema()} />
   <main>
     <Hero />
 

@@ -3,12 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import CTA from "../components/CTA.astro";
 import { faqs } from "../data/faq";
 import { site } from "../config/site";
+
+import JsonLd from "../components/JsonLd.astro";
+import { faqSchema } from "../lib/schema";
 ---
 
 <Layout
   title="Preguntas frecuentes"
   description={`Respuestas a las preguntas más comunes sobre nuestro servicio técnico de PC y notebooks en ${site.city}.`}
 >
+  <JsonLd data={faqSchema(faqs)} />
   <main>
     <section class="mx-auto max-w-3xl px-4 py-16">
       <h1 class="text-4xl font-bold tracking-tight">Preguntas frecuentes</h1>
